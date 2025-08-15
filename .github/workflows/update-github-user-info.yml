@@ -3,7 +3,7 @@ name: Update GitHub User Info
 on:
   workflow_dispatch:
   schedule:
-    - cron: "17 7 * * *"  # daily at 07:17 UTC
+    - cron: "30 9 * * *"  # daily at 07:17 UTC
 
 jobs:
   build:
@@ -28,7 +28,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}  # optional, but recommended
         run: |
-          python generate_github_user_info.py "${{ github.repository_owner }}" --out GITHUB_USER_INFO.md
+          python git_profile.py "${{ github.repository_owner }}" --out GITHUB_USER_INFO.md
 
       - name: Commit & Push
         run: |
